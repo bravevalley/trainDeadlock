@@ -5,9 +5,9 @@ import (
 	"sync"
 
 	"github.com/hajimehoshi/ebiten/v2"
+	"go.dev/controls"
 	"go.dev/models"
 	"go.dev/visuals"
-	"go.dev/controls"
 )
 
 var (
@@ -50,7 +50,13 @@ func main() {
 	visual.Trains = Trains
 	visual.Intersections = Intersections
 
-	go controls.MoveTrain(Trains[0], 400)
+	go controls.MoveTrain(Trains[0], 400, []*models.TrainCrossing{{Position: 125, Intersection: Intersections[0]}, {Position: 175, Intersection: Intersections[1]}})
+
+	go controls.MoveTrain(Trains[1], 400, []*models.TrainCrossing{{Position: 125, Intersection: Intersections[1]}, {Position: 175, Intersection: Intersections[2]}})
+
+	go controls.MoveTrain(Trains[2], 400, []*models.TrainCrossing{{Position: 125, Intersection: Intersections[2]}, {Position: 175, Intersection: Intersections[3]}})
+
+	go controls.MoveTrain(Trains[3], 400, []*models.TrainCrossing{{Position: 125, Intersection: Intersections[3]}, {Position: 175, Intersection: Intersections[1]}})
 
 	ebiten.SetWindowSize(320*3, 320*3)
 	ebiten.SetWindowTitle("Trains in a box")
