@@ -18,11 +18,11 @@ func MoveTrain(train *models.Train, distance int, crossings []*models.TrainCross
 			trainBack := train.FrontPosition - train.Length
 
 			if trainBack > trainCross.Position {
-				trainCross.Intersection.Mu.Unlock()
 				trainCross.Intersection.PresentlyUsedBy = -1
+				trainCross.Intersection.Mu.Unlock()
 			}
 
-			time.Sleep(1900 * time.Millisecond)
+			time.Sleep(50 * time.Millisecond)
 		}
 	}
 }
