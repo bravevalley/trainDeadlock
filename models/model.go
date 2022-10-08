@@ -3,18 +3,18 @@ package models
 import "sync"
 
 type Train struct {
-	Id int
-	Length int
+	Id            int
+	Length        int
 	FrontPosition int
 }
 
 type Intersection struct {
-	Id int
-	Mu sync.Mutex
+	Id              int
+	Mu              sync.Mutex
 	PresentlyUsedBy int
 }
 
 type TrainCrossing struct {
-	Position int
+	Position     int
 	Intersection *Intersection
 }
