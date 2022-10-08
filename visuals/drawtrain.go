@@ -18,6 +18,8 @@ var (
 	white = color.RGBA{R: 185, G: 185, B: 185, A: 255}
 )
 
+// Declare the variable so it values can be imported from the
+// main module
 var Trains [4]*models.Train
 var Intersections [4]*models.Intersection
 

@@ -11,10 +11,14 @@ import (
 )
 
 var (
+
+	// Define an array for the trains and intersections which implicitly define the numbers
+	// of trains and intersections
 	Trains        [4]*models.Train
 	Intersections [4]*models.Intersection
 )
 
+// The unanimous lenght of the train
 const trainLength = 80
 
 type Game struct{}
@@ -35,21 +39,27 @@ func (g *Game) Layout(_, _ int) (w, h int) {
 
 func main() {
 
+	// Define the each train in a loop and assign the
+	// index value as the train ID
 	for i := 0; i < 4; i++ {
 		Trains[i] = &models.Train{Id: i,
 			Length:        trainLength,
 			FrontPosition: 0}
 	}
-
+	// Define the each intersection in a loop and assign the
+	// index value as the intersection ID
 	for i := 0; i < 4; i++ {
 		Intersections[i] = &models.Intersection{Id: i,
 			Mu:              sync.Mutex{},
 			PresentlyUsedBy: -1}
 	}
 
+	// Send the variable to the visual module for processing
 	visual.Trains = Trains
 	visual.Intersections = Intersections
 
+	// Create go routine to handle each trains, the parameters have been defined
+	// in the module
 	go controls.Locomotive(Trains[0], 300, []*models.TrainCrossing{{Position: 125, Intersection: Intersections[0]}, {Position: 175, Intersection: Intersections[1]}})
 
 	go controls.Locomotive(Trains[1], 300, []*models.TrainCrossing{{Position: 125, Intersection: Intersections[1]}, {Position: 175, Intersection: Intersections[2]}})

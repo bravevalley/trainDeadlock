@@ -6,6 +6,8 @@ import (
 	"go.dev/models"
 )
 
+// This function moves the train and locks each intersection but this creates
+// a deadlock
 func MoveTrain(train *models.Train, distance int, crossings []*models.TrainCrossing) {
 	for train.FrontPosition < distance {
 		train.FrontPosition += 1
