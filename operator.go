@@ -60,13 +60,13 @@ func main() {
 
 	// Create go routine to handle each trains, the parameters have been defined
 	// in the module
-	go controls.Locomotive(Trains[0], 300, []*models.TrainCrossing{{Position: 125, Intersection: Intersections[0]}, {Position: 175, Intersection: Intersections[1]}})
+	go controls.Movement(Trains[0], 300, []*models.TrainCrossing{{Position: 125, Intersection: Intersections[0]}, {Position: 175, Intersection: Intersections[1]}})
 
-	go controls.Locomotive(Trains[1], 300, []*models.TrainCrossing{{Position: 125, Intersection: Intersections[1]}, {Position: 175, Intersection: Intersections[2]}})
+	go controls.Movement(Trains[1], 300, []*models.TrainCrossing{{Position: 125, Intersection: Intersections[1]}, {Position: 175, Intersection: Intersections[2]}})
 
-	go controls.Locomotive(Trains[2], 300, []*models.TrainCrossing{{Position: 125, Intersection: Intersections[2]}, {Position: 175, Intersection: Intersections[3]}})
+	go controls.Movement(Trains[2], 300, []*models.TrainCrossing{{Position: 125, Intersection: Intersections[2]}, {Position: 175, Intersection: Intersections[3]}})
 
-	go controls.Locomotive(Trains[3], 300, []*models.TrainCrossing{{Position: 125, Intersection: Intersections[3]}, {Position: 175, Intersection: Intersections[0]}})
+	go controls.Movement(Trains[3], 300, []*models.TrainCrossing{{Position: 125, Intersection: Intersections[3]}, {Position: 175, Intersection: Intersections[0]}})
 
 	ebiten.SetWindowSize(320*3, 320*3)
 	ebiten.SetWindowTitle("Trains in a box")
